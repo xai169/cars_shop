@@ -1,38 +1,385 @@
-.App {
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.2;
+  margin: 0;
+}
+
+@font-face {
+  font-family: rubik;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/rubik-bold.woff2) format("woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: rubik;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/rubik-light.woff2) format("woff2");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: rubik;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/rubik-regular.woff2) format("woff2");
+      
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: rubik;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/rubik-medium.woff2) format("woff2");
+  font-weight: 500;
+}
+
+body, html {
+  width: 100%;
+  min-width: 1144px;
+  font-family: rubik, arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #383838;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+}
+
+*, ::after, ::before {
+  box-sizing: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0,0,0,0);
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+}
+
+.container {
+  width: 1144px;
+  margin: 0 auto;
+  padding: 0 58px;
+}
+
+.button {
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
   text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  outline: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page {
+  background: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.page--gray {
+  background: #f5f5f5;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page__main--index {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.cities {
+  display: flex;
+  flex-grow: 1;
+  overflow-y: hidden;
+  background: #fff;
+}
+
+.cities__cars-container {
+  display: flex;
+  padding-right: 0;
+}
+
+.cities__cars {
+  width: 572px;
+  margin: 2px 2px 0 0;
+  padding: 29px 0 7px 9px;
+  overflow-y: auto;
+}
+
+.cities__cars-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  padding-left: 5px;
+}
+
+.cities__map {
+  width: 100%;
+  align-self: stretch;
+}
+
+.cities__status-wrapper {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  margin: 25.4vh auto 0;
+  padding-top: 62px;
+  text-align: center;
+  background-size: 45px 47px;
+}
+
+.cities__status-description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0 45px;
+}
+
+.locations__item-link.tabs__item--active,
+.locations--current .locations__item-link {
+  color: #fff;
+  background: #4481c3;
+}
+
+.locations__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0;
+  padding: 16px 3px 33px;
+}
+
+.locations__item {
+  display: block;
+  margin: 0 36px 19px 0;
+}
+
+.locations__item-link {
+  display: block;
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: 300;
+  font-style: oblique;
+  border-radius: 3px;
+  padding: 9px 21px 6px 11px;
+}
+
+.locations__item-link span {
+  display: block;
+  transform: skew(15deg);
+}
+
+.cars__found {
+  display: block;
+  margin-bottom: 22px;
+  padding-left: 2px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+.cars__sorting {
+  position: relative;
+  margin-bottom: 33px;
+  padding-left: 5px;
+}
+
+.cars__sorting-arrow {
+  rotate: 90deg;
+}
+
+.cars__options {
+  list-style: none;
+  border: 1px solid #dfdfdf;
+  border-radius: 4px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.cars__option {
+  cursor: pointer;
+}
+
+.cars__options--custom {
+  position: absolute;
+  top: 100%;
+  left: 52px;
+  z-index: 1;
+  display: none;
+}
+
+.cars__sorting-caption {
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.cars__sorting-type {
+  position: relative;
+  display: inline-block;
+  padding-right: 12px;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.car-card {
+  position: relative;
+}
+
+.car-card__image-wrapper {
+  margin-bottom: 9px;
+}
+
+.car-card__image {
+  display: block;
+  border-radius: 4px;
+}
+
+.car-card:hover .car-card__image {
+  opacity: 0.7;
+}
+
+.car-card__info {
+  flex-grow: 1;
+}
+
+.car-card__price-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.car-card__price {
+  margin-right: 20px;
+}
+
+.car-card__price-value {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.car-card__price-text {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.car-card__name {
+  margin: 0 0 4px;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: oblique;
+}
+
+.car-card__name a {
+  display: inline-block;
+}
+
+.car-card__type {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.car-card__type_color {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.car-card__edit-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.car-card__color-box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #4481c3;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.form__textarea,
+.form__input {
+  font-size: 16px;
+  line-height: 1.1875;
+  color: #383838;
+  border: 1px solid #e6e6e6;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.form__input {
+  padding: 15px 14px 13px;
+}
+
+.form__submit {
+  color: #fff;
+  border-radius: 3px;
+  padding: 16px 20px 13px;
+  background: #4481c3;
+}
+
+.form__submit:focus,
+.form__submit:hover {
+  background: #3069a6;
+}
+
+.page--main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.cities__right-section {
+  display: flex;
+  flex-grow: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cities__car-card {
+  width: 260px;
+  margin: 0 0 24px 8px;
 }
+
+.cars__options--opened {
+  display:block;
+  }
