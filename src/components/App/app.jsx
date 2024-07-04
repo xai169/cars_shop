@@ -9,7 +9,7 @@ const App = (props) => {
   const {sortingList, citiesList} = props;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter  basename="/cars_shop">
       <Switch>
         <Route exact path="/">
           <MainPage
